@@ -1,11 +1,6 @@
----
-title: "Nordea bank transactions analysis"
-author: "Tommi Pajala"
-date: "7.2.2017"
-output:
-  html_document: default
-  html_notebook: default
----
+# Nordea bank transactions analysis
+Tommi Pajala  
+7.2.2017  
 This document shows you how to analyze your Nordea bank transaction data, by categorizing transactions based on the recipient, and then drawing summarizing visualizations on your income/expenses patterns.
 
 ##Requirements
@@ -112,13 +107,13 @@ unique(dat$Recipient)
 ## [13] "XYZ CO"                         "MY ACC"                        
 ## [15] "Cafe Esplanad"                  "NORDNET BANK AB"               
 ## [17] "Ristorante Papa Albert"         "Central"                       
-## [19] "UniSport   Töölö kassa 37"      "R HKI KAMPIN METRO"            
+## [19] "UniSport   TÃ¶Ã¶lÃ¶ kassa 37"      "R HKI KAMPIN METRO"            
 ## [21] "Omatili"                        "Satkar Oy"                     
 ## [23] "ALEPA MUNKKINIEMEN PUI"         "Apteekki Toolo"                
 ## [25] "R ESPOO OTANIEMI"               "Intersport Mikonkatu Hels"     
 ## [27] "CLAS OHLSON KAM"                "ESPRESSOHOUSE KAMPPI"          
 ## [29] "HSL Kampin terminaali"          "Boulderkeskus Isatis"          
-## [31] "NORDEA RAHOITUS SUOMI OY"       "Haaga Instituutti Säätiö"      
+## [31] "NORDEA RAHOITUS SUOMI OY"       "Haaga Instituutti SÃ¤Ã¤tiÃ¶"      
 ## [33] "Alko Helsinki Lauttasaari"      "MCDONALDS PACIUKSENK."         
 ## [35] "K SUPERMARKET KAMPPI"           "KUNTOKUMPPANIT"                
 ## [37] "Harman Foods Oy"                "Katrina s Cafe   Cater"        
@@ -126,7 +121,7 @@ unique(dat$Recipient)
 ## [41] "RAVINTOLA FACTORY KAMP"         "Antell Ravintolat Oy Aalt"     
 ## [43] "CAFE TORI"                      "GREEN CAB"                     
 ## [45] "Starbucks  40945"               "MAUERMUSEUM AM CC"             
-## [47] "HSL Lentoasema"                 "Mäkelänrinteen Uintikesku"     
+## [47] "HSL Lentoasema"                 "MÃ¤kelÃ¤nrinteen Uintikesku"     
 ## [49] "LEONARDO"                       "ABC PERSON"                    
 ## [51] "Pistrina Oy"                    NA                              
 ## [53] "LA CANAULIERE"                  "ELITE PALACE HOTEL"            
@@ -323,8 +318,8 @@ table(dat$category=="Other",format(dat$"Payment date","%m"))
 ```
 ##        
 ##         10 11 12
-##   FALSE 54 39 68
-##   TRUE   7  8  9
+##   FALSE 54 40 68
+##   TRUE   7  7  9
 ```
 
 ```r
@@ -333,31 +328,30 @@ as.data.frame(unique(dat[dat$category=="Other",c("Recipient")]))
 ```
 
 ```
-##                    Recipient
-## 1                T mi Dimrat
-## 2                        VFI
-## 3        PAYPAL *PAY.GOV U.S
-## 4                    Central
-## 5         R HKI KAMPIN METRO
-## 6           R ESPOO OTANIEMI
-## 7   Haaga Instituutti Säätiö
-## 8             KUNTOKUMPPANIT
-## 9            Harman Foods Oy
-## 10    Koulutuskeskus Unika H
-## 11                 GREEN CAB
-## 12 Mäkelänrinteen Uintikesku
-## 13                  LEONARDO
-## 14               Pistrina Oy
-## 15                      <NA>
-## 16             LA CANAULIERE
-## 17        ELITE PALACE HOTEL
-## 18      VIGARDA VASAGATAN 44
-## 19           FLIPPIN BURGERS
-## 20    Helsingin Kirja  ja le
-## 21          Los Bastardos Oy
-## 22    Avecra Oy Baguette   C
-## 23        iZ *Karuda Hyvinvo
-## 24                 BASE CAMP
+##                   Recipient
+## 1               T mi Dimrat
+## 2                       VFI
+## 3       PAYPAL *PAY.GOV U.S
+## 4                   Central
+## 5        R HKI KAMPIN METRO
+## 6          R ESPOO OTANIEMI
+## 7  Haaga Instituutti SÃ¤Ã¤tiÃ¶
+## 8            KUNTOKUMPPANIT
+## 9           Harman Foods Oy
+## 10   Koulutuskeskus Unika H
+## 11                GREEN CAB
+## 12                 LEONARDO
+## 13              Pistrina Oy
+## 14                     <NA>
+## 15            LA CANAULIERE
+## 16       ELITE PALACE HOTEL
+## 17     VIGARDA VASAGATAN 44
+## 18          FLIPPIN BURGERS
+## 19   Helsingin Kirja  ja le
+## 20         Los Bastardos Oy
+## 21   Avecra Oy Baguette   C
+## 22       iZ *Karuda Hyvinvo
+## 23                BASE CAMP
 ```
 
 
@@ -371,7 +365,7 @@ dat_filtered <- dat_filtered%>%filter(category!="internal")
 ggplot(dat_filtered,aes(x=dat_filtered$`Payment date`,y=value,col=fromAccount))+geom_point()
 ```
 
-![plot of chunk viz](figure/viz-1.png)
+![](finance_analysis_files/figure-html/viz-1.png)<!-- -->
 
 If you have bought a house or such, the loan may appear in you bank statement. For a cash flow analysis, you might want to do that. This shows how to do that, even though for this test data set, nothing changes.
 
@@ -389,7 +383,7 @@ temp2 <- dat %>% group_by(Recipient) %>% filter(n()>5)
 ggplot(temp2,aes(x=reorder(Recipient, table(Recipient)[Recipient]),fill=fromAccount))+geom_bar()+coord_flip()
 ```
 
-![plot of chunk targets](figure/targets-1.png)
+![](finance_analysis_files/figure-html/targets-1.png)<!-- -->
 
 Suppose you want a graph about your balance for just one month. You can get it like this:
 
@@ -400,7 +394,7 @@ df <- summarise(group_by(df,day),"value"=sum(value))
 ggplot(df,aes(x=day,y=cumsum(value)))+geom_line()
 ```
 
-![plot of chunk monthly_balance](figure/monthly_balance-1.png)
+![](finance_analysis_files/figure-html/monthly_balance-1.png)<!-- -->
 
 How much money are you spending, and how much money are you getting in for the year? Blue bars are income and red bars are expenses. The black point is the net income for each month.
 
@@ -411,7 +405,7 @@ ggplot(df,aes(x=month,y=value))+geom_bar(aes(fill=income),stat="identity")+
   geom_point(data=summarise(group_by(df,month),"value"=sum(value)))
 ```
 
-![plot of chunk income_vs_expenses](figure/income_vs_expenses-1.png)
+![](finance_analysis_files/figure-html/income_vs_expenses-1.png)<!-- -->
 
 How about cumulative income and expenses per month - is your lifestyle looking sustainable? The black points are monthly net income, the red line is a locally smoothed line.
 
@@ -419,7 +413,7 @@ How about cumulative income and expenses per month - is your lifestyle looking s
 ggplot(data=summarise(group_by(df,month),"value"=sum(value)),aes(x=month,y=cumsum(value)))+geom_point()+geom_line(aes(group=1))+geom_smooth(aes(x=month,y=cumsum(value),col="red"),show.legend = F,se=F)
 ```
 
-![plot of chunk cumulative](figure/cumulative-1.png)
+![](finance_analysis_files/figure-html/cumulative-1.png)<!-- -->
   
 How are you spending money per category this year monthly? I'll filter out income, and only look at costs.
 
@@ -430,7 +424,7 @@ temp3 <- temp3%>%mutate(value=-value)%>%filter(value>0)
 ggplot(temp3,aes(x=month,y=value,fill=category))+geom_bar(stat = "identity")
 ```
 
-![plot of chunk category_plots](figure/category_plots-1.png)
+![](finance_analysis_files/figure-html/category_plots-1.png)<!-- -->
 
 As you see, this plot is pretty messy - I have too many categories for the plot to look nice. However, many categories are still nice to have in the data, just in case I want to look at expenses on a more granular level.
 
@@ -440,7 +434,7 @@ But for a nicer visualization, let's try the same graph with the 2nd level categ
 ggplot(temp3,aes(x=month,y=value,fill=general_category))+geom_bar(stat = "identity")+scale_fill_brewer(type="qual",palette="Set3")
 ```
 
-![plot of chunk general_categories](figure/general_categories-1.png)
+![](finance_analysis_files/figure-html/general_categories-1.png)<!-- -->
 
 Ok, this is already way clearer! A lot of stuff gets thrown into the "other" category, so in the future, I might consider splitting it up somehow.
 
@@ -450,7 +444,7 @@ Finally, I'll do the same graph with just must vs. want categorization. This is 
 ggplot(arrange(temp3,must_vs_want),aes(x=month,y=value,fill=must_vs_want))+geom_bar(stat = "identity")
 ```
 
-![plot of chunk must vs want](figure/must vs want-1.png)
+![](finance_analysis_files/figure-html/must vs want-1.png)<!-- -->
 
 As for summaries, this gives you a nice PivotTable-style summary of expenses by category and month. I have used the *temp3* defined above, so that we only look at expenses.
 
@@ -466,11 +460,11 @@ dcast(temp3,month~category,fun.aggregate = sum,value.var = "value")
 ## 3    12    3.25 107.25    30.16  30.46      165.76         44.78  784.92
 ##    food insurance investing lunch monthly common  Other pharmacy phone
 ## 1 50.85      0.00    303.30 91.25            631 138.34      2.5 44.44
-## 2 20.21    256.52    300.00 67.20            631 111.54      0.0  0.00
+## 2 20.21    256.52    300.00 67.20            631 108.24      0.0  0.00
 ## 3 32.94    769.54   2522.22 62.75            631 227.89      0.0 20.94
 ##   public transport restaurants shopping sport
 ## 1            142.9       34.10     7.99 73.65
-## 2             20.0       11.30     0.00  0.00
+## 2             20.0       11.30     0.00  3.30
 ## 3             30.0       37.66     8.90  4.50
 ```
 
@@ -482,11 +476,11 @@ dcast(temp3,month~general_category,fun.aggregate = sum,value.var = "value")
 ```
 ##   month bank & insurance   food going out mandatory monthly common   other
 ## 1    10           306.55 142.10     46.80     44.44            631  162.40
-## 2    11           559.77  87.41     32.55      0.00            631 2552.85
+## 2    11           559.77  87.41     32.55      0.00            631 2549.55
 ## 3    12          3295.01  95.69     68.12     20.94            631 1178.57
 ##   shopping
 ## 1   229.53
-## 2    47.49
+## 2    50.79
 ## 3   225.59
 ```
 
