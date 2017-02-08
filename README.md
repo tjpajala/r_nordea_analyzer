@@ -71,7 +71,7 @@ Now, because it's quite hard to remember account numbers, you can save more desc
 
 ```r
 #define the account numbers here, so names can be assigned
-account_numbers <- c("FI0613505000120405","FI9113093500144118","FI1217713500024350","FI4713093500144134")
+account_numbers <- c("FI061350","FI911309","FI121771","FI471309350")
 account_names <-c("Checking account","Emergency fund","Grants","Savings") 
 #with this, you can call account_labeller[account_number] and get the name that you have defined
 account_labeller <- setNames(account_names,account_numbers)

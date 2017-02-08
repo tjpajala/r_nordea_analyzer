@@ -2,7 +2,10 @@
 title: "Nordea bank transactions analysis"
 author: "Tommi Pajala"
 date: "7.2.2017"
-output: html_document
+output:
+  html_document: 
+    keep_md: yes
+  html_notebook: default
 ---
 This document shows you how to analyze your Nordea bank transaction data, by categorizing transactions based on the recipient, and then drawing summarizing visualizations on your income/expenses patterns.
 
@@ -78,7 +81,7 @@ Now, because it's quite hard to remember account numbers, you can save more desc
 ###Define account names
 ```{r accounts, echo=TRUE}
 #define the account numbers here, so names can be assigned
-account_numbers <- c("FI0613505000120405","FI9113093500144118","FI1217713500024350","FI4713093500144134")
+account_numbers <- c("FI061350","FI911309","FI121771","FI471309350")
 account_names <-c("Checking account","Emergency fund","Grants","Savings") 
 #with this, you can call account_labeller[account_number] and get the name that you have defined
 account_labeller <- setNames(account_names,account_numbers)

@@ -1,0 +1,18 @@
+﻿Tilinumero	FI471309350
+
+Kirjauspäivä	Arvopäivä	Maksupäivä	Määrä	Saaja/Maksaja	Tilinumero	BIC	Tapahtuma	Viite	Maksajan viite	Viesti	Kortinnumero	Kuitti	
+
+19.10.2016	19.10.2016	19.10.2016	250,00	MY ACC			Tilisiirto			 			
+
+07.11.2016	07.11.2016	07.11.2016	0,31	NORDEA PANKKI			Talletuskorko			01.11.2015-31.10.2016 KERTYNYT KORKO             0,41 E -LÄHDEVERO                 0,10 E 			
+
+21.11.2016	21.11.2016	21.11.2016	250,00	MY ACC			Tilisiirto			 			
+
+19.12.2016	19.12.2016	19.12.2016	250,00	MY ACC			Tilisiirto			 			
+
+19.12.2016	19.12.2016	19.12.2016	-500,00	MY ACC	135050-120405	NDEAFIHH							
+
+22.12.2016	21.12.2016	21.12.2016	500,00	MY ACC									
+
+30.12.2016	30.12.2016	30.12.2016	-300,00	MY ACC	130935-144118	NDEAFIHH							
+

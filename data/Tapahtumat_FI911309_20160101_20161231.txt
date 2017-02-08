@@ -1,0 +1,15 @@
+﻿Tilinumero	FI911309350
+Kirjauspäivä	Arvopäivä	Maksupäivä	Määrä	Saaja/Maksaja	Tilinumero	BIC	Tapahtuma	Viite	Maksajan viite	Viesti	Kortinnumero	Kuitti	
+
+07.11.2016	07.11.2016	07.11.2016	2,57	NORDEA PANKKI			Talletuskorko			01.11.2015-31.10.2016 KERTYNYT KORKO             3,67 E -LÄHDEVERO                 1,10 E 			
+
+22.12.2016	21.12.2016	21.12.2016	200,00	MY ACC									
+
+22.12.2016	22.12.2016	22.12.2016	666,66	GRANT_1			Pano		O-5161200008-541	 			
+
+23.12.2016	23.12.2016	23.12.2016	-666,66	MY ACC	177135-24350	NDEAFIHH							
+
+30.12.2016	30.12.2016	30.12.2016	300,00	MY ACC									
+
+30.12.2016	30.12.2016	30.12.2016	300,00	MY ACC									
+
