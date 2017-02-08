@@ -1,6 +1,6 @@
 # Nordea bank transactions analysis
 Tommi Pajala  
-7.2.2017  
+8.2.2017  
 This document shows you how to analyze your Nordea bank transaction data, by categorizing transactions based on the recipient, and then drawing summarizing visualizations on your income/expenses patterns.
 
 ##Requirements
@@ -11,7 +11,7 @@ This document shows you how to analyze your Nordea bank transaction data, by cat
 
 Download the transaction files from Nordea. You have to log in to your banking interface, go to "Accounts" ("Tilit"), select and account and go to "Transactions" ("Tapahtumaluettelo"). There, you can select the time period you want, for example the whole 2016 year. Then just download the files for all accounts you want to analyze (you can also exclude accounts later in the analysis). Save all the .txt files in a folder called "data", so that "data" is a subfolder to where this script is located. So let's say this script is in a folder called "Bank_analysis", then store the .txt files in "Bank_analysis/data".
 
-The examples below plot some figures from the supplied example data. To run the analysis in your Rstudio console, press the button that says "Knit" and looks like this:
+The examples below plot some figures from the supplied example data. To run the analysis in your Rstudio console, load the finance_analysis.Rmd file and the "data" folder. Then just open the .Rmd in Rstudio and press the button that says "Knit" and looks like this:
 ![The Knit button.](knit_button.png)
 
 ##Define used Nordea data
@@ -71,7 +71,7 @@ Now, because it's quite hard to remember account numbers, you can save more desc
 
 ```r
 #define the account numbers here, so names can be assigned
-account_numbers <- c("FI061350","FI911309","FI121771","FI471309350")
+account_numbers <- c("FI061350","FI911309","FI121771","FI471309")
 account_names <-c("Checking account","Emergency fund","Grants","Savings") 
 #with this, you can call account_labeller[account_number] and get the name that you have defined
 account_labeller <- setNames(account_names,account_numbers)
