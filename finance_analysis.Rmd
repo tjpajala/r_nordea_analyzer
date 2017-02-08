@@ -24,7 +24,7 @@ if(!require(readr)){install.packages("readr");library(readr)}
 ```
 Download the transaction files from Nordea. You have to log in to your banking interface, go to "Accounts" ("Tilit"), select and account and go to "Transactions" ("Tapahtumaluettelo"). There, you can select the time period you want, for example the whole 2016 year. Then just download the files for all accounts you want to analyze (you can also exclude accounts later in the analysis). Save all the .txt files in a folder called "data", so that "data" is a subfolder to where this script is located. So let's say this script is in a folder called "Bank_analysis", then store the .txt files in "Bank_analysis/data".
 
-The examples below plot some figures from the supplied example data. To run the analysis in your Rstudio console, load the finance_analysis.Rmd file and the "data" folder. Then just open the .Rmd in Rstudio and press the button that says "Knit" and looks like this:
+The examples below plot some figures from the supplied example dataset, which is randomized and anonymized transaction data. To run the analysis in your Rstudio console, load the finance_analysis.Rmd file and the "data" folder. Then just open the .Rmd in Rstudio and press the button that says "Knit" and looks like this:
 ![The Knit button.](knit_button.png)
 
 ##Define used Nordea data
@@ -107,7 +107,7 @@ unique(dat$Recipient)
 write.table(unique(dat$Recipient),"recipients.txt",sep=",",row.names = F,col.names = F)
 ```
 
-In this block you can define your own categories, and what to look for when replacing them. You can do the list easily by copypasting the *"recipients.txt"* in the code below, and the just defining your own categories. Categories are key/value pairs, so that the first value is the key (what to look for in the recipient field, case-insensitive), and the second is the category for that income/expense. A good tip is to generalize, by for example defining _"restaurant"="restaurants"_ and _"ravintola"="restaurants"_. This means that anything that contains the word _"restaurant"_ or _"ravintola"_ will be categorized as a restaurant. Similarly, you can define all _"alepa"_ locations as grocery stores with one rule. Check the code below for examples. Remember to have the commas at the end of each line (except the last)!
+In this block you can define your own categories, and what to look for when replacing them. You can do the list easily by copypasting the *"recipients.txt"* in the code below, and then just defining your own categories. Categories are key/value pairs, so that the first value is the key (what to look for in the recipient field, case-insensitive), and the second is the category for that income/expense. A good tip is to generalize, by for example defining _"restaurant"="restaurants"_ and _"ravintola"="restaurants"_. This means that anything that contains the word _"restaurant"_ or _"ravintola"_ will be categorized as a restaurant. Similarly, you can define all _"alepa"_ locations as grocery stores with one rule. Check the code below for examples. Remember to have the commas at the end of each line (except the last)!
 
 ```{r revalue_categories}
 grep_replacements <- c(
